@@ -14,7 +14,7 @@ const ELEMENTS = {
         'Ti','Pb','Bi','Po','At','Rn','Fr','Ra','Ac','Th',
         'Pa','U','Np','Pu','Am','Cm','Bk','Cf','Es','Fm',
         'Md','No','Lr','Rf','Db','Sg','Bh','Hs','Mt','Ds',
-        'Rg','Cn','Nh','Fl','Mc','Lv','Ts','Og'
+        'Rg','Cn','Nh','Fl','Mc','Lv','Ts','Og','Fg'
     ],
     fullNames: [
         null,
@@ -29,7 +29,7 @@ const ELEMENTS = {
         'Thallium','Lead','Bismuth','Polonium','Astatine','Radon','Francium','Radium','Actinium','Thorium',
         'Protactinium','Uranium','Neptunium','Plutonium','Americium','Curium','Berkelium','Californium','Einsteinium','Fermium',
         'Mendelevium','Nobelium','Lawrencium','Ruthefordium','Dubnium','Seaborgium','Bohrium','Hassium','Meitnerium','Darmstadium',
-        'Roeritgenium','Copernicium','Nihonium','Flerovium','Moscovium','Livermorium','Tennessine','Oganesson'
+        'Roeritgenium','Copernicium','Nihonium','Flerovium','Moscovium','Livermorium','Tennessine','Oganesson','Fogeronium'
     ],
     canBuy(x) { return player.atom.quarks.gte(this.upgs[x].cost) && !player.atom.elements.includes(x) },
     buyUpg(x) {
@@ -42,11 +42,11 @@ const ELEMENTS = {
         null,
         {
             desc: `Improves quark gain formula is better.`,
-            cost: E(5e8),
+            cost: E(1e8),
         },
         {
             desc: `Hardened Challenge scale 25% weaker.`,
-            cost: E(2.5e12),
+            cost: E(1e12),
         },
         {
             desc: `Electron Power boost Atomic Powers gain.`,
@@ -60,7 +60,7 @@ const ELEMENTS = {
         },
         {
             desc: `Stronger’s power is stronger based on Proton Powers.`,
-            cost: E(2.5e16),
+            cost: E(1e16),
             effect() {
                 let x = player.atom?player.atom.powers[0].max(1).log10().pow(0.8).div(50).add(1):E(1)
                 return x
@@ -72,13 +72,13 @@ const ELEMENTS = {
             cost: E(1e18),
         },
         {
-            desc: `Gain 1% more quarks for each challenge completion.`,
+            desc: `Gain 5% more quarks for each challenge completion.`,
             cost: E(5e18),
             effect() {
                 let x = E(0)
                 for (let i = 1; i <= CHALS.cols; i++) x = x.add(player.chal.comps[i].mul(i>4?2:1))
                 if (player.atom.elements.includes(7)) x = x.mul(tmp.elements.effect[7])
-                return x.div(100).add(1).max(1)
+                return x.div(100).add(5).max(5)
             },
             effDesc(x) { return format(x)+"x" },
         },
@@ -87,7 +87,7 @@ const ELEMENTS = {
             cost: E(1e20),
             effect() {
                 let x = E(player.atom.elements.length+1)
-                if (player.atom.elements.includes(11)) x = x.pow(2)
+                if (player.atom.elements.includes(11)) x = x.pow(10)
                 return x
             },
             effDesc(x) { return format(x)+"x" },
@@ -97,8 +97,8 @@ const ELEMENTS = {
             cost: E(1e21),
         },
         {
-            desc: `The Tetr requirement is 15% weaker.`,
-            cost: E(6.5e21),
+            desc: `The Tetr requirement is 25% weaker.`,
+            cost: E(1e21),
         },
         {
             desc: `3rd & 4th challenges’ scaling is weakened.`,
