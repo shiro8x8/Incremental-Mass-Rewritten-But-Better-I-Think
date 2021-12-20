@@ -1,36 +1,29 @@
 const SCALE_START = {
     super: {
-        rank: E(50),
-		tier: E(10),
-		tetr: E(7),
+        rank: E(100),
+		tier: E(25),
+		tetr: E(10),
         massUpg: E(100),
 		tickspeed: E(100),
 		bh_condenser: E(100),
 		gamma_ray: E(100),
-		supernova: E(15),
-		fTier: E(10),
     },
 	hyper: {
-		rank: E(120),
-		massUpg: E(500),
-		tickspeed: E(250),
-		bh_condenser: E(300),
-		gamma_ray: E(300),
+		rank: E(250),
+		massUpg: E(1000),
+		tickspeed: E(2500),
+		bh_condenser: E(5000),
+		gamma_ray: E(10000),
 	},
 	ultra: {
-		rank: E(600),
-		tickspeed: E(700),
-		bh_condenser: E(750),
-		gamma_ray: E(800),
-	},
-	meta: {/*
-		rank: E(1200),
-		tickspeed: E(3000),*/
-	},
+		rank: E(1000),
+		tickspeed: E(2500),
+		bh_condenser: E(7500),
+		gamma_ray: E(50000),
 }
 
-const SCALE_TYPE = ['super', 'hyper', 'ultra', 'meta'] // super, hyper, ultra, meta
-const FULL_SCALE_NAME = ['Super', 'Hyper', 'Ultra', 'Meta']
+const SCALE_TYPE = ['super', 'hyper', 'ultra'] // super, hyper, ultra 
+const FULL_SCALE_NAME = ['Super', 'Hyper', 'Ultra']
 
 const SCALING_RES = {
     rank(x=0) { return player.ranks.rank },
